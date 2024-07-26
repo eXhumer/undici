@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         node-version: [lts/*, latest]
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [macos-latest, ubuntu-latest]
 
     name: benchmark current
     runs-on: ${{ matrix.os }}
@@ -39,7 +39,7 @@ jobs:
     strategy:
       matrix:
         node-version: [lts/*, latest]
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [macos-latest, ubuntu-latest]
 
     name: benchmark branch
     runs-on: ${{ matrix.os }}
@@ -65,7 +65,7 @@ jobs:
     strategy:
       matrix:
         node-version: [lts/*, latest]
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [macos-latest, ubuntu-latest]
 
     name: benchmark (sending data) current
     runs-on: ${{ matrix.os }}
@@ -92,7 +92,7 @@ jobs:
     strategy:
       matrix:
         node-version: [lts/*, latest]
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [macos-latest, ubuntu-latest]
 
     name: benchmark (sending data) branch
     runs-on: ${{ matrix.os }}
@@ -118,7 +118,7 @@ jobs:
     strategy:
       matrix:
         node-version: [lts/*, latest]
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [macos-latest, ubuntu-latest]
 
     name: benchmark current h2
     runs-on: ${{ matrix.os }}
@@ -145,7 +145,7 @@ jobs:
     strategy:
       matrix:
         node-version: [lts/*, latest]
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [macos-latest, ubuntu-latest]
 
     name: benchmark branch h2
     runs-on: ${{ matrix.os }}
