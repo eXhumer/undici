@@ -1,16 +1,16 @@
 {
   "name": "benchmarks",
   "scripts": {
-    "bench": "cross-env PORT=3042 concurrently -k -s first npm:bench:server npm:bench:run",
-    "bench:h2": "cross-env PORT=3052 concurrently -k -s first npm:bench:server:h2 npm:bench:run:h2",
-    "bench-post": "cross-env PORT=3042 concurrently -k -s first npm:bench:server npm:bench-post:run",
+    "bench": "npx cross-env PORT=3042 concurrently -k -s first npm:bench:server npm:bench:run",
+    "bench:h2": "npx cross-env PORT=3052 concurrently -k -s first npm:bench:server:h2 npm:bench:run:h2",
+    "bench-post": "npx cross-env PORT=3042 concurrently -k -s first npm:bench:server npm:bench-post:run",
     "bench:server": "node ./server.js",
     "bench:server:h2": "node ./server-http2.js",
     "prebench:run": "node ./wait.js",
-    "bench:run": "cross-env SAMPLES=100 CONNECTIONS=50 node ./benchmark.js",
-    "bench:run:h2": "cross-env SAMPLES=100 CONNECTIONS=50 node ./benchmark-http2.js",
+    "bench:run": "npx cross-env SAMPLES=100 CONNECTIONS=50 node ./benchmark.js",
+    "bench:run:h2": "npx cross-env SAMPLES=100 CONNECTIONS=50 node ./benchmark-http2.js",
     "prebench-post:run": "node ./wait.js",
-    "bench-post:run": "cross-env SAMPLES=100 CONNECTIONS=50 node ./post-benchmark.js"
+    "bench-post:run": "npx cross-env SAMPLES=100 CONNECTIONS=50 node ./post-benchmark.js"
   },
   "dependencies": {
     "axios": "^1.6.7",
