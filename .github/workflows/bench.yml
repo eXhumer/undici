@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         node-version: [lts/*, latest]
-        os: [macos-latest, ubuntu-latest]
+        os: [macos-latest, ubuntu-latest, windows-latest]
 
     name: benchmark current
     runs-on: ${{ matrix.os }}
@@ -34,12 +34,17 @@ jobs:
       - name: Run Benchmark
         run: npm run bench
         working-directory: ./benchmarks
+        if: matrix.os != 'windows-latest'
+      - name: Run Benchmark
+        run: npm run bench:win
+        working-directory: ./benchmarks
+        if: matrix.os == 'windows-latest'
 
   benchmark_branch:
     strategy:
       matrix:
         node-version: [lts/*, latest]
-        os: [macos-latest, ubuntu-latest]
+        os: [macos-latest, ubuntu-latest, windows-latest]
 
     name: benchmark branch
     runs-on: ${{ matrix.os }}
@@ -60,12 +65,17 @@ jobs:
       - name: Run Benchmark
         run: npm run bench
         working-directory: ./benchmarks
+        if: matrix.os != 'windows-latest'
+      - name: Run Benchmark
+        run: npm run bench:win
+        working-directory: ./benchmarks
+        if: matrix.os == 'windows-latest'
 
   benchmark_post_current:
     strategy:
       matrix:
         node-version: [lts/*, latest]
-        os: [macos-latest, ubuntu-latest]
+        os: [macos-latest, ubuntu-latest, windows-latest]
 
     name: benchmark (sending data) current
     runs-on: ${{ matrix.os }}
@@ -87,12 +97,17 @@ jobs:
       - name: Run Benchmark
         run: npm run bench-post
         working-directory: ./benchmarks
+        if: matrix.os != 'windows-latest'
+      - name: Run Benchmark
+        run: npm run bench-post:win
+        working-directory: ./benchmarks
+        if: matrix.os == 'windows-latest'
 
   benchmark_post_branch:
     strategy:
       matrix:
         node-version: [lts/*, latest]
-        os: [macos-latest, ubuntu-latest]
+        os: [macos-latest, ubuntu-latest, windows-latest]
 
     name: benchmark (sending data) branch
     runs-on: ${{ matrix.os }}
@@ -113,12 +128,17 @@ jobs:
       - name: Run Benchmark
         run: npm run bench-post
         working-directory: ./benchmarks
+        if: matrix.os != 'windows-latest'
+      - name: Run Benchmark
+        run: npm run bench-post:win
+        working-directory: ./benchmarks
+        if: matrix.os == 'windows-latest'
 
   benchmark_current_h2:
     strategy:
       matrix:
         node-version: [lts/*, latest]
-        os: [macos-latest, ubuntu-latest]
+        os: [macos-latest, ubuntu-latest, windows-latest]
 
     name: benchmark current h2
     runs-on: ${{ matrix.os }}
@@ -140,12 +160,17 @@ jobs:
       - name: Run Benchmark
         run: npm run bench:h2
         working-directory: ./benchmarks
+        if: matrix.os != 'windows-latest'
+      - name: Run Benchmark
+        run: npm run bench:h2:win
+        working-directory: ./benchmarks
+        if: matrix.os == 'windows-latest'
 
   benchmark_branch_h2:
     strategy:
       matrix:
         node-version: [lts/*, latest]
-        os: [macos-latest, ubuntu-latest]
+        os: [macos-latest, ubuntu-latest, windows-latest]
 
     name: benchmark branch h2
     runs-on: ${{ matrix.os }}
@@ -166,3 +191,8 @@ jobs:
       - name: Run Benchmark
         run: npm run bench:h2
         working-directory: ./benchmarks
+        if: matrix.os != 'windows-latest'
+      - name: Run Benchmark
+        run: npm run bench:h2:win
+        working-directory: ./benchmarks
+        if: matrix.os == 'windows-latest'
