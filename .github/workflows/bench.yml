@@ -36,8 +36,13 @@ jobs:
         working-directory: ./benchmarks
 
   benchmark_branch:
+    strategy:
+      matrix:
+        node-version: [lts/*, latest]
+        os: [macos-latest, ubuntu-latest, windows-latest]
+
     name: benchmark branch
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
@@ -46,7 +51,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
         with:
-          node-version: lts/*
+          node-version: ${{ matrix.node-version }}
       - name: Install Modules for undici
         run: npm i --ignore-scripts --omit=dev
       - name: Install Modules for Benchmarks
@@ -57,8 +62,13 @@ jobs:
         working-directory: ./benchmarks
 
   benchmark_post_current:
+    strategy:
+      matrix:
+        node-version: [lts/*, latest]
+        os: [macos-latest, ubuntu-latest, windows-latest]
+
     name: benchmark (sending data) current
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
@@ -68,7 +78,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
         with:
-          node-version: lts/*
+          node-version: ${{ matrix.node-version }}
       - name: Install Modules for undici
         run: npm i --ignore-scripts --omit=dev
       - name: Install Modules for Benchmarks
@@ -79,8 +89,13 @@ jobs:
         working-directory: ./benchmarks
 
   benchmark_post_branch:
+    strategy:
+      matrix:
+        node-version: [lts/*, latest]
+        os: [macos-latest, ubuntu-latest, windows-latest]
+
     name: benchmark (sending data) branch
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
@@ -89,7 +104,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
         with:
-          node-version: lts/*
+          node-version: ${{ matrix.node-version }}
       - name: Install Modules for undici
         run: npm i --ignore-scripts --omit=dev
       - name: Install Modules for Benchmarks
@@ -100,8 +115,13 @@ jobs:
         working-directory: ./benchmarks
 
   benchmark_current_h2:
+    strategy:
+      matrix:
+        node-version: [lts/*, latest]
+        os: [macos-latest, ubuntu-latest, windows-latest]
+
     name: benchmark current h2
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
@@ -111,7 +131,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
         with:
-          node-version: lts/*
+          node-version: ${{ matrix.node-version }}
       - name: Install Modules for undici
         run: npm i --ignore-scripts --omit=dev
       - name: Install Modules for Benchmarks
@@ -122,8 +142,13 @@ jobs:
         working-directory: ./benchmarks
 
   benchmark_branch_h2:
+    strategy:
+      matrix:
+        node-version: [lts/*, latest]
+        os: [macos-latest, ubuntu-latest, windows-latest]
+
     name: benchmark branch h2
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
@@ -132,7 +157,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
         with:
-          node-version: lts/*
+          node-version: ${{ matrix.node-version }}
       - name: Install Modules for undici
         run: npm i --ignore-scripts --omit=dev
       - name: Install Modules for Benchmarks
