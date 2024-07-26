@@ -1,11 +1,11 @@
 name: Create release
 
 on:
-  push:
-    branches:
-     - main
-    paths:
-      - package.json
+  # push:
+  #   branches:
+  #    - main
+  #   paths:
+  #     - package.json
 
 permissions:
   contents: read

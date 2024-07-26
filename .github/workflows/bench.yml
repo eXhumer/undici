@@ -1,16 +1,21 @@
 name: Benchmarks
 on:
-  - push
-  - pull_request
-  - workflow_dispatch
+  # - push
+  # - pull_request
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
   benchmark_current:
+    strategy:
+      matrix:
+        node-version: [lts/*, latest]
+        os: [macos-latest, ubuntu-latest, windows-latest]
+
     name: benchmark current
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
@@ -20,7 +25,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
         with:
-          node-version: lts/*
+          node-version: ${{ matrix.node-version }}
       - name: Install Modules for undici
         run: npm i --ignore-scripts --omit=dev
       - name: Install Modules for Benchmarks
